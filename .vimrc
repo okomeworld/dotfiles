@@ -1,4 +1,5 @@
 syntax on
+set nocompatible
 set nobackup
 set encoding=utf-8
 set fileencoding=utf-8
@@ -8,3 +9,4 @@ set shiftwidth=4
 set tabstop=4
 set noexpandtab
 set autoindent
+set backspace=indent,eol,start
