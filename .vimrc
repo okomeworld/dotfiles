@@ -15,8 +15,13 @@ call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('AndrewRadev/splitjoin.vim')
-call dein#add('scrooloose/syntastic')
 call dein#add('thinca/vim-ref')
+
+call dein#add('thinca/vim-quickrun')
+call dein#add('osyo-manga/shabadou.vim')
+call dein#add('osyo-manga/vim-watchdogs')
+call dein#add('dannyob/quickfixstatus')
+call dein#add('KazuakiM/vim-qfsigns')
 
 call dein#end()
 
@@ -61,21 +66,32 @@ au BufRead,BufNewFile,BufReadPre *.cgi set filetype=perl
 au BufRead,BufNewFile,BufReadPre *.rb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.erb set ts=2 sts=2 sw=2 et
 
-"--------------------------------------------------------
-" syntastic設定
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_checkers = ['perl', 'podchecker']
-let g:syntastic_enable_signs =1
-let g:syntastic_auto_loc_list =2
-let g:syntastic_mode_map = {'mode': 'passive'} 
-augroup AutoSyntastic
-    autocmd!
-    autocmd InsertLeave,TextChanged * call s:syntastic() 
+"---------------------------------------------------------
+" watchdog関連の設定
+
+if !exists("g:quickrun_config")
+	let g:quickrun_config = {}
+endif
+
+let g:quickrun_config["_"] = {
+	\ "runner" : "vimproc",
+	\ "runner/vimproc/updatetime" : 10,
+	\ }
+
+let g:quickrun_config["watchdogs_checker/_"] = {
+	\ "outputter/quickfix/open_cmd" : "",
+	\ "hook/qfsigns_update/enable_exit" : 1,
+	\ "hook/qfsigns_update/priority_exit" : 3,
+	\ }
+
+" If syntax error, cursor is moved at line setting sign.
+let g:qfsigns#AutoJump = 1
+
+augroup my_watchdogs
+  autocmd!
+  autocmd InsertLeave,BufWritePost,TextChanged *.php WatchdogsRun
+  autocmd BufRead,BufNewFile *.php WatchdogsRun
 augroup END
-function! s:syntastic()
-    w
-    SyntasticCheck
-endfunction
 
 "---------------------------------------------------------
 " neocompleteの設定
