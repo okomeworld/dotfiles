@@ -12,4 +12,4 @@ export PS1="[\u@\h \w$(__git_ps1)]\n$ "
 
 # alias
 alias vi="vim"
-alias ls="ls -AG --color"
+alias ls="ls -AG"
