@@ -15,6 +15,8 @@ call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('AndrewRadev/splitjoin.vim')
+call dein#add('scrooloose/syntastic')
+call dein#add('thinca/vim-ref')
 
 call dein#end()
 
@@ -58,6 +60,22 @@ set backspace=indent,eol,start
 au BufRead,BufNewFile,BufReadPre *.cgi set filetype=perl
 au BufRead,BufNewFile,BufReadPre *.rb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.erb set ts=2 sts=2 sw=2 et
+
+"--------------------------------------------------------
+" syntastic設定
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perl', 'podchecker']
+let g:syntastic_enable_signs =1
+let g:syntastic_auto_loc_list =2
+let g:syntastic_mode_map = {'mode': 'passive'} 
+augroup AutoSyntastic
+    autocmd!
+    autocmd InsertLeave,TextChanged * call s:syntastic() 
+augroup END
+function! s:syntastic()
+    w
+    SyntasticCheck
+endfunction
 
 "---------------------------------------------------------
 " neocompleteの設定
