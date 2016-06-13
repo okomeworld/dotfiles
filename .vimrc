@@ -65,6 +65,7 @@ set backspace=indent,eol,start
 au BufRead,BufNewFile,BufReadPre *.cgi set filetype=perl
 au BufRead,BufNewFile,BufReadPre *.rb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.erb set ts=2 sts=2 sw=2 et
+au BufRead,BufNewFile,BufReadPre *.yml set ts=2 sts=2 sw=2 et
 
 "---------------------------------------------------------
 " watchdog関連の設定
