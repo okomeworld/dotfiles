@@ -23,6 +23,8 @@ call dein#add('osyo-manga/vim-watchdogs')
 call dein#add('dannyob/quickfixstatus')
 call dein#add('KazuakiM/vim-qfsigns')
 
+call dein#add('vim-scripts/smarty-syntax')
+
 call dein#end()
 
 if dein#check_install()
@@ -66,6 +68,9 @@ au BufRead,BufNewFile,BufReadPre *.cgi set filetype=perl
 au BufRead,BufNewFile,BufReadPre *.rb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.erb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.yml set ts=2 sts=2 sw=2 et
+
+" .aliasesのファイルタイプをshにする
+au BufRead,BufNewfile,BufReadPre .aliases set filetype=sh
 
 "---------------------------------------------------------
 " watchdog関連の設定
