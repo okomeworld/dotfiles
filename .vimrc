@@ -25,6 +25,8 @@ call dein#add('KazuakiM/vim-qfsigns')
 
 call dein#add('vim-scripts/smarty-syntax')
 
+call dein#add('junegunn/vim-easy-align')
+
 call dein#end()
 
 if dein#check_install()
@@ -71,6 +73,11 @@ au BufRead,BufNewFile,BufReadPre *.yml set ts=2 sts=2 sw=2 et
 
 " .aliasesのファイルタイプをshにする
 au BufRead,BufNewfile,BufReadPre .aliases set filetype=sh
+
+"---------------------------------------------------------
+" easy-align関連の設定
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 "---------------------------------------------------------
 " watchdog関連の設定
