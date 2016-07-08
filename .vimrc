@@ -65,6 +65,7 @@ set noexpandtab
 set autoindent
 set smartindent
 set backspace=indent,eol,start
+set hlsearch
 
 au BufRead,BufNewFile,BufReadPre *.cgi set filetype=perl
 au BufRead,BufNewFile,BufReadPre *.rb set ts=2 sts=2 sw=2 et
