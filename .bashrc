@@ -8,7 +8,7 @@ source "${HOME}/.git-prompt.sh"
 source "${HOME}/.git-completion.bash"
 
 # prompt
-export PS1="[\u@\h \w$(__git_ps1)]\n$ "
+export PS1='[\u@\h \w$(__git_ps1)]\n$ '
 
 # alias
 alias vi="vim"
