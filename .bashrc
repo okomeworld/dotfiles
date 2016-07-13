@@ -12,8 +12,11 @@ export PS1='[\u@\h \w$(__git_ps1)]\n$ '
 
 # alias
 alias vi="vim"
-alias ls="ls -A"
 
 if [ -f ~/.aliases ]; then
 	. ~/.aliases
+fi
+
+if [ -d ~/bin ]; then
+	export PATH=$PATH:~/bin
 fi
