@@ -29,6 +29,8 @@ call dein#add('junegunn/vim-easy-align')
 
 call dein#add('editorconfig/editorconfig-vim')
 
+call dein#add('stephpy/vim-php-cs-fixer')
+
 call dein#end()
 
 if dein#check_install()
@@ -108,6 +110,18 @@ augroup my_watchdogs
   autocmd InsertLeave,BufWritePost,TextChanged *.php WatchdogsRun
   autocmd BufRead,BufNewFile *.php WatchdogsRun
 augroup END
+
+"---------------------------------------------------------
+" vim-php-cs-fixer関連の設定
+let g:php_cs_fixer_level = "symfony"              " which level ?
+let g:php_cs_fixer_config = "default"             " configuration
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+
+nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
+nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 
 "---------------------------------------------------------
 " neocompleteの設定
