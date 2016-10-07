@@ -73,7 +73,6 @@ au BufRead,BufNewFile,BufReadPre *.cgi set filetype=perl
 au BufRead,BufNewFile,BufReadPre *.rb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.erb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.yml set ts=2 sts=2 sw=2 et
-au FileType php set ts=4 sts=4 sw=4 et
 
 " .aliasesのファイルタイプをshにする
 au BufRead,BufNewfile,BufReadPre .aliases set filetype=sh
