@@ -27,6 +27,8 @@ call dein#add('vim-scripts/smarty-syntax')
 
 call dein#add('junegunn/vim-easy-align')
 
+call dein#add('editorconfig/editorconfig-vim')
+
 call dein#end()
 
 if dein#check_install()
