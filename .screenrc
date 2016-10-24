@@ -15,7 +15,7 @@ caption always "%-w%10L>%{=b bw}%n %t%{-}%+w%-0="
 hardstatus alwayslastline "%H%=%Y/%m/%d %02c"
 shelltitle "$ |shell"
 
-bindkey -k kD stuff \177
+bind -k kD stuff \177
 
 termcapinfo xterm* ti@:te@
 
