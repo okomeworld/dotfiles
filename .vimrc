@@ -70,6 +70,7 @@ set autoindent
 set smartindent
 set backspace=indent,eol,start
 set hlsearch
+set conceallevel=0
 
 au BufRead,BufNewFile,BufReadPre *.cgi set filetype=perl
 au BufRead,BufNewFile,BufReadPre *.rb set ts=2 sts=2 sw=2 et
