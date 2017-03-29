@@ -31,6 +31,18 @@ call dein#add('editorconfig/editorconfig-vim')
 
 call dein#add('stephpy/vim-php-cs-fixer')
 
+" es6ハイライト
+call dein#add('othree/yajs.vim')
+" stage-0 ハイライト
+call dein#add('othree/es.next.syntax.vim')
+" jsxハイライト
+call dein#add('mxw/vim-jsx')
+
+" vimでeslintに沿ってfixする
+call dein#add('ruanyl/vim-fixmyjs')
+
+call dein#add('kchmck/vim-coffee-script')
+
 call dein#end()
 
 if dein#check_install()
@@ -76,14 +88,34 @@ au BufRead,BufNewFile,BufReadPre *.cgi set filetype=perl
 au BufRead,BufNewFile,BufReadPre *.rb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.erb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.yml set ts=2 sts=2 sw=2 et
+au BufRead,BufNewFile,BufReadPre *.md set ts=2 sts=2 sw=2 et
+au FileType php set ts=4 sts=4 sw=4 et
+au FileType json set ts=2 sts=2 sw=2 et
+au FileType javascript set ts=2 sts=2 sw=2 et equalprg=eslint-fix
+au FileType css set ts=2 sts=2 sw=2 et
+au FileType scss set ts=2 sts=2 sw=2 et
+au FileType html set ts=2 sts=2 sw=2 et
+au FileType markdown set ts=2 sts=2 sw=2 et
 
 " .aliasesのファイルタイプをshにする
 au BufRead,BufNewfile,BufReadPre .aliases set filetype=sh
+
+" js拡張子をjsxにする
+au BufRead,BufNewfile,BufReadPre *.js,*.jsx set filetype=javascript.jsx
 
 "---------------------------------------------------------
 " easy-align関連の設定
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+"---------------------------------------------------------
+" vim-jsx関連の設定
+let g:jsx_ext_required = 1		" ファイルタイプがjsxのときに有効になる
+let g:jsx_pragma_required = 0	" @から始まるプラグマでは読み込まない
+
+"---------------------------------------------------------
+" fixmyjs関連の設定
+"let g:fixmyjs_use_local = 1	" ローカルのeslintrcに沿ってfixする
 
 "---------------------------------------------------------
 " watchdog関連の設定
