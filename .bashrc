@@ -18,5 +18,12 @@ if [ -f ~/.aliases ]; then
 fi
 
 if [ -d ~/bin ]; then
-	export PATH=$PATH:~/bin
+	export PATH=~/bin:$PATH
 fi
+
+# rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
+eval "$(rbenv init -)"
+
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH

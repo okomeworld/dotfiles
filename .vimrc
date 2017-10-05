@@ -43,6 +43,8 @@ call dein#add('ruanyl/vim-fixmyjs')
 
 call dein#add('kchmck/vim-coffee-script')
 
+call dein#add('w0rp/ale')
+
 call dein#end()
 
 if dein#check_install()
@@ -88,14 +90,13 @@ au BufRead,BufNewFile,BufReadPre *.cgi set filetype=perl
 au BufRead,BufNewFile,BufReadPre *.rb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.erb set ts=2 sts=2 sw=2 et
 au BufRead,BufNewFile,BufReadPre *.yml set ts=2 sts=2 sw=2 et
-au BufRead,BufNewFile,BufReadPre *.md set ts=2 sts=2 sw=2 et
 au FileType php set ts=4 sts=4 sw=4 et
 au FileType json set ts=2 sts=2 sw=2 et
 au FileType javascript set ts=2 sts=2 sw=2 et equalprg=eslint-fix
 au FileType css set ts=2 sts=2 sw=2 et
 au FileType scss set ts=2 sts=2 sw=2 et
 au FileType html set ts=2 sts=2 sw=2 et
-au FileType markdown set ts=2 sts=2 sw=2 et
+au FileType markdown set ts=4 sts=4 sw=4 et
 
 " .aliasesのファイルタイプをshにする
 au BufRead,BufNewfile,BufReadPre .aliases set filetype=sh
@@ -143,6 +144,27 @@ augroup my_watchdogs
   autocmd InsertLeave,BufWritePost,TextChanged *.php WatchdogsRun
   autocmd BufRead,BufNewFile *.php WatchdogsRun
 augroup END
+
+" [ALE] eslintの結果をステータスラインに出す
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_erros = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+                \   '%dW %dE',
+                \   all_non_errors,
+                \   all_errors
+                \)
+endfunction
+
+" [ALE] :ALEFixで該当行をfixできるように設定
+let g:ale_fixers = {
+    \     'javascript': ['eslint', 'jshint'],
+    \ }
+
+set statusline=%{LinterStatus()}
 
 "---------------------------------------------------------
 " vim-php-cs-fixer関連の設定
