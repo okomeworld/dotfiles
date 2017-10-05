@@ -45,6 +45,8 @@ call dein#add('kchmck/vim-coffee-script')
 
 call dein#add('w0rp/ale')
 
+call dein#add('othree/html5.vim')
+
 call dein#end()
 
 if dein#check_install()
